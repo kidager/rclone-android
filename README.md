@@ -5,7 +5,8 @@
 
 ## Releases
 
-Each [release](https://github.com/kidager/rclone-android/releases) has:
+Releases follow rclone: release `v1.73.0` is rclone v1.73.0. Each
+[release](https://github.com/kidager/rclone-android/releases) has:
 
 - `librclone-<rclone version>-<abi>.so` for `armeabi-v7a`, `arm64-v8a`, `x86` and `x86_64`
 - `THIRD_PARTY_LICENSES.txt`, the licenses of rclone and every Go module built into it
@@ -15,8 +16,10 @@ The libraries are linked for API level 21 and up (the NDK's minimum) and aligned
 
 ## Versions
 
-- rclone and Go: `go.mod`. Dependabot opens a PR for each new rclone release.
-- NDK: `NDK_VERSION` in `.github/workflows/build.yml`.
+- rclone and Go: `go.mod`. Dependabot opens a PR for each new rclone release; once merged, the release for that
+  version is built and published.
+- NDK: `NDK_VERSION` in `.github/workflows/build.yml`. Changing it, or Go, doesn't publish a new release: run the
+  Build workflow by hand to rebuild the current release's files.
 
 ## Building
 
