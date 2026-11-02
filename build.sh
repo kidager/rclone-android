@@ -27,8 +27,9 @@ build arm64-v8a arm64 aarch64-linux-android
 build x86 386 i686-linux-android
 build x86_64 amd64 x86_64-linux-android
 
+# Installed for the host, then run against the Android build
+GOBIN="$PWD/.bin" go install github.com/google/go-licenses/v2@v2.0.1
 CC="$toolchain/aarch64-linux-android$api-clang" GOOS=android GOARCH=arm64 CGO_ENABLED=1 \
-	go run github.com/google/go-licenses/v2@v2.0.1 report . --template licenses.tpl \
-	> dist/THIRD_PARTY_LICENSES.txt
+	.bin/go-licenses report . --template licenses.tpl > dist/THIRD_PARTY_LICENSES.txt
 
 (cd dist && sha256sum ./*.so THIRD_PARTY_LICENSES.txt > SHA256SUMS)
